@@ -78,6 +78,13 @@ config = ccat.Config(
  {
    "response": "Ciao! blah... blah...."
  }
+
+## SUGGESTIONS
+
+For a test with multiple connections avoid the usage of embedded flask webserver, use gunicorn with multiple workers like:
+
+gunicorn -w 4 process_cheshire:app -b 127.0.0.1:5000
+ 
 ## TODO
 
 - enforce auth
