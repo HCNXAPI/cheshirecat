@@ -102,6 +102,28 @@ and check status of service with
 
 sudo systemctl status cheshirecat_api
 
+● cheshirecat_api.service - Gunicorn instance to serve cheshire api
+     Loaded: loaded (/etc/systemd/system/cheshirecat_api.service; enabled; vendor preset: enabled)
+     Active: active (running) since Mon 2024-02-05 23:51:44 UTC; 1min 42s ago
+   Main PID: 264413 (gunicorn)
+      Tasks: 6 (limit: 4612)
+     Memory: 133.4M
+     CGroup: /system.slice/cheshirecat_api.service
+             ├─264413 /usr/bin/python3 /usr/bin/gunicorn -w 4 process_cheshire:app -b 0.0.0.0:5000
+             ├─264426 /usr/bin/python3 /usr/bin/gunicorn -w 4 process_cheshire:app -b 0.0.0.0:5000
+             ├─264427 /usr/bin/python3 /usr/bin/gunicorn -w 4 process_cheshire:app -b 0.0.0.0:5000
+             ├─264428 /usr/bin/python3 /usr/bin/gunicorn -w 4 process_cheshire:app -b 0.0.0.0:5000
+             └─264429 /usr/bin/python3 /usr/bin/gunicorn -w 4 process_cheshire:app -b 0.0.0.0:5000
+
+Feb 05 23:51:44 homestead systemd[1]: Started Gunicorn instance to serve cheshire api.
+Feb 05 23:51:44 homestead gunicorn[264413]: [2024-02-05 23:51:44 +0000] [264413] [INFO] Starting gunicorn 20.0.4
+Feb 05 23:51:44 homestead gunicorn[264413]: [2024-02-05 23:51:44 +0000] [264413] [INFO] Listening at: http://0.0.0.0:5000 (264413)
+Feb 05 23:51:44 homestead gunicorn[264413]: [2024-02-05 23:51:44 +0000] [264413] [INFO] Using worker: sync
+Feb 05 23:51:44 homestead gunicorn[264426]: [2024-02-05 23:51:44 +0000] [264426] [INFO] Booting worker with pid: 264426
+Feb 05 23:51:44 homestead gunicorn[264427]: [2024-02-05 23:51:44 +0000] [264427] [INFO] Booting worker with pid: 264427
+Feb 05 23:51:45 homestead gunicorn[264428]: [2024-02-05 23:51:45 +0000] [264428] [INFO] Booting worker with pid: 264428
+Feb 05 23:51:45 homestead gunicorn[264429]: [2024-02-05 23:51:45 +0000] [264429] [INFO] Booting worker with pid: 264429
+
 
  
 ## TODO
