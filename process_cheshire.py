@@ -41,25 +41,42 @@ def on_close(status_code: int, message: str):
     print(f"Connection closed with code {status_code}: {message}")
 
 def send_via_websocket(user_id, message):
+    # Create a new event and response queue for this user_id
     event = threading.Event()
     response_queue = queue.Queue()
     response_events[user_id] = (event, response_queue)
+
+    # Adjust the config with the user_id from the HTTP request
+    # Assuming cheshire_cat_api allows dynamic configuration per connection
+    dynamic_config = ccat.Config(
+        base_url=config.base_url,
+        port=config.port,
+        user_id=user_id,  # Use the user_id from the HTTP request
+        auth_key=config.auth_key,
+        secure_connection=config.secure_connection
+    )
     
+    # Initialize CatClient with the dynamically set configuration
     cat_client = ccat.CatClient(
-        config=config,
+        config=dynamic_config,
         on_open=on_open,
         on_close=on_close,
         on_message=on_message,
         on_error=on_error
     )
+    
     cat_client.connect_ws()
     while not cat_client.is_ws_connected:
         time.sleep(1)
+    
+    # Now, the message includes the user_id from the HTTP request
     cat_client.send(message=json.dumps({"user_id": user_id, "message": message}))
-    # Attendere l'evento invece di utilizzare sleep
+    
+    # Wait for the response event to be set
     event.wait()
     response = response_queue.get()
     return response
+
 
 @app.route('/send', methods=['POST'])
 def send_message():
