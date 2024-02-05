@@ -60,8 +60,24 @@ config = ccat.Config(
 
 ## HOW TO TEST
 
+ first of all launch flask application python process_cheshire.py this will launch a http server on port 5000
+
+ you shoudl obtain a output like:
+  * Serving Flask app 'process_cheshire'
+  * Debug mode: on
+  WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+  * Running on http://127.0.0.1:5000
+  Press CTRL+C to quit
+
+  now from another shell:
+
  curl -X POST http://localhost:5000/send -H "Content-Type: application/json" -d '{"user_id":"user1", "message":"hello say me hello"}'
 
+ and you should receive something like
+
+ {
+   "response": "Ciao! blah... blah...."
+ }
 ## TODO
 
 - enforce auth
