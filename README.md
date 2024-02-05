@@ -84,6 +84,25 @@ config = ccat.Config(
 For a test with multiple connections avoid the usage of embedded flask webserver, use gunicorn with multiple workers like:
 
 gunicorn -w 4 process_cheshire:app -b 127.0.0.1:5000
+
+if you want use cheshirecat_api.service to enable it as service, see below.
+
+
+## cheshirecat_api.service
+
+copy file cheshirecat_api.service in  /etc/systemd/system/ then
+
+sudo systemctl enable cheshirecat_api.service
+
+start it with
+
+sudo systemctl start  cheshirecat_api
+
+and check status of service with 
+
+sudo systemctl status cheshirecat_api
+
+
  
 ## TODO
 
