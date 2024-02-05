@@ -45,3 +45,25 @@ A Flask app instance is initialized with configuration parameters for the WebSoc
 5. **HTTP Response**: The thread handling the original HTTP request retrieves the WebSocket response from the queue and sends it back to the client as JSON.
 
 This setup enables asynchronous message processing via WebSockets within a synchronous HTTP request-response framework, ideal for applications requiring real-time data exchange with external services or systems.
+
+
+## HOW TO SETUP
+Change base_url and port to pint to cheshirecat ai installation or docker
+
+config = ccat.Config(
+    base_url="IP - or docker name",
+    port=1865,
+    user_id="user1",
+    auth_key="",
+    secure_connection=False
+)
+
+## HOW TO TEST
+
+ curl -X POST http://localhost:5000/send -H "Content-Type: application/json" -d '{"user_id":"user1", "message":"hello say me hello"}'
+
+## TODO
+
+- enforce auth
+- queue management can be improved, the threading model used in this example is enough to handle tests and basic traffic, a queue manager will be a must in case of usage under of heavy load.
+  
