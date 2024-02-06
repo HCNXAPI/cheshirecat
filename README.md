@@ -2,6 +2,14 @@
 
 This code demonstrates a simple web server setup using Flask, integrating WebSocket communication for asynchronous task handling. The server is designed to process HTTP POST requests containing messages and user IDs, forwarding these messages via WebSocket to another service the `cheshire_cat_api` (WebSocket server), await responses, and relay these back to the HTTP client.
 
+
+## REQUIREMENTS
+python 3.10 as ([API Documentation](https://cheshire-cat-ai.github.io/docs/technical/clientlib/clientlib-python/)
+
+pip install cheshire_cat_api
+pip install jsonify
+pip install flask
+
 ## Import Statements
 
 - **Flask**: A micro web framework for Python, enabling HTTP request handling.
