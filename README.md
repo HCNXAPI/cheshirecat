@@ -139,4 +139,6 @@ Feb 05 23:51:45 homestead gunicorn[264429]: [2024-02-05 23:51:45 +0000] [264429]
 . media management - POST to rabbithole etc...
 - enforce auth
 - queue management can be improved, the threading model used in this example is enough to handle tests and basic traffic, a queue manager will be a must in case of usage under of heavy load.
-  
+
+## :sunglasses: THAT'S IT!
+
